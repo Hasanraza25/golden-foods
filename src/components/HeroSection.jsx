@@ -70,14 +70,6 @@ export default function Hero() {
       repeat: -1
     });
 
-    // Buttery smooth continuous plate rotation
-    const plateRotationTween = gsap.to(plate, {
-      rotation: "+=360",
-      duration: 120, // Slower for smoother feel
-      repeat: -1,
-      ease: "none"
-    });
-
     // Enhanced transition smoke effect
     const createTransitionSmoke = () => {
       const smokeParticles = smoke.children;
