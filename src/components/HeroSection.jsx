@@ -254,7 +254,7 @@ export default function Hero() {
     <>
       <section 
         ref={heroRef}
-        className="relative min-h-[120vh] sm:min-h-[125vh] md:min-h-[130vh] lg:min-h-[135vh] xl:min-h-[140vh] overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-yellow-900 text-white flex flex-col"
+        className="relative min-h-screen overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-yellow-900 text-white flex flex-col"
         style={{ opacity: 0 }}
       >
         {/* Amazing Background Elements */}
@@ -284,7 +284,7 @@ export default function Hero() {
         </div> */}
 
         {/* Main Content Container - Fixed for mobile */}
-        <div className="flex-1 flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-12 xl:px-16 py-12 sm:py-16 lg:py-20 xl:py-24 relative z-20 max-w-7xl mx-auto w-full gap-8 lg:gap-4">
+        <div className="flex-1 flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-12 xl:px-16 py-8 sm:py-12 lg:py-16 xl:py-20 relative z-20 max-w-7xl mx-auto w-full gap-8 lg:gap-4">
           {/* Left Content - Mobile optimized */}
           <div className="w-full lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl flex-shrink-0 text-center lg:text-left order-1 lg:order-1" ref={textRef}>
             <div className="mb-4 sm:mb-6 lg:mb-8">
