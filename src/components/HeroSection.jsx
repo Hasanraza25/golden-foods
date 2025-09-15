@@ -437,16 +437,6 @@ export default function Hero() {
           </div>
         </div>
       </section>
-
-      {/* Bottom Section - Mobile responsive */}
-      <div className="h-16 sm:h-20 lg:h-24 xl:h-32 bg-gradient-to-t from-yellow-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-50/50 via-white to-yellow-50/50"></div>
-        <div className="h-full flex items-center justify-center relative z-10">
-          <div className="text-center text-red-800 px-4">
-            <p className="text-xs sm:text-sm lg:text-lg font-medium">Trusted by families worldwide for authentic taste and premium quality</p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }

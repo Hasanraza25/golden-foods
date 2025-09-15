@@ -1,12 +1,10 @@
-import Hero from "./components/HeroSection";
-import MainPic from "./components/MAINPIC";
-import HomePage from "./pages/HomePAge";
+
+import HomePage from "./pages/HomePage";
 
 export default function App() {
   return(
     <div className="">
       <HomePage />
-      {/* <MainPic/> */}
     </div>
   )
 }
