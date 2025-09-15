@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import LOGO from "../assets/logo.png";
 
 // Import all plate images
 import blankPlate from "../assets/images/blank-plate.png";
@@ -277,15 +278,19 @@ export default function Hero() {
 
         {/* Main Content Container - Fixed for mobile */}
         <div className="flex-1 flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-12 xl:px-16 py-8 sm:py-12 lg:py-16 xl:py-20 relative z-20 max-w-7xl mx-auto w-full gap-8 lg:gap-4">
+          
           {/* Left Content - Mobile optimized */}
           <div className="w-full lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl flex-shrink-0 text-center lg:text-left order-1 lg:order-1" ref={textRef}>
-            <div className="mb-4 sm:mb-6 lg:mb-8">
-              <span className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400/20 to-red-500/20 text-yellow-300 px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm border border-yellow-400/30">
-                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400 rounded-full animate-pulse"></span>
-                Premium Quality Since 1990
-              </span>
-            </div>
+
             
+            <div className="w-32 h-16 sm:w-48 sm:h-28">
+                            <img
+                              src={LOGO}
+                              alt="Golden Logo"
+                              className="h-full w-full object-contain filter brightness-110"
+                            />
+                          </div>
+
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-tight mb-4 sm:mb-6 lg:mb-8">
               <span className="block text-white mb-1 sm:mb-2">Authentic</span>
               <span className="block bg-gradient-to-r from-yellow-400 via-red-400 to-yellow-500 bg-clip-text text-transparent">
@@ -293,12 +298,21 @@ export default function Hero() {
               </span>
               
             </h1>
+
+            <div className="mb-4 sm:mb-6 lg:mb-8">
+              <span className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400/20 to-red-500/20 text-yellow-300 px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm border border-yellow-400/30">
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+                Premium Quality Since 1990
+              </span>
+            </div>
             
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl mb-6 sm:mb-8 lg:mb-12 text-red-100 leading-relaxed max-w-lg lg:max-w-xl xl:max-w-2xl font-light mx-auto lg:mx-0">
               Crafting premium pasta, noodles, and traditional delicacies with 
               <span className="text-yellow-300 font-medium"> authentic recipes</span> and 
               <span className="text-yellow-300 font-medium"> finest ingredients</span> for over three decades.
             </p>
+
+            
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start" ref={buttonRef}>
               <button className="bg-gradient-to-r from-red-600 to-yellow-500 text-white px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-lg font-semibold hover:from-red-500 hover:to-yellow-400 transition-all duration-300 shadow-lg hover:shadow-red-500/25 hover:scale-105 transform text-sm sm:text-base lg:text-lg">
