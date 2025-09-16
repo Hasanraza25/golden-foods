@@ -3,7 +3,7 @@ import missionVisionImg from "../assets/mission-vision.png"; // replace with you
 
 const MissionVision = () => {
   return (
-    <section className="relative w-full bg-gradient-to-br from-red-900 via-red-800 to-yellow-900 py-16 px-6 md:px-12 lg:px-20 text-white">
+    <section className="relative w-full py-16 px-6 md:px-12 lg:px-20 text-white">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         
         {/* Text Content */}
