@@ -75,18 +75,18 @@ export default function BannerPremium() {
           </div>
 
           {/* Arrows closer to text */}
-          <div className="flex gap-3 mt-8">
+          <div className="flex gap-3 mt-8 mb-44 sm:mb-0">
             <button
               onClick={prev}
-              className="p-3 rounded-full text-gray-800 border-gray-300 hover:bg-yellow-100"
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-300 text-gray-800 hover:bg-yellow-100"
             >
-              <FaArrowLeft size={16} />
+              <FaArrowLeft size={18} />
             </button>
             <button
               onClick={next}
-              className="p-3 rounded-full text-gray-800 border-gray-300 hover:bg-yellow-100"
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-300 text-gray-800 hover:bg-yellow-100"
             >
-              <FaArrowRight size={16} />
+              <FaArrowRight size={18} />
             </button>
           </div>
         </div>

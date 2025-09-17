@@ -17,7 +17,7 @@ const floatAnimation = {
 
 const FloatingIngredients = () => {
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 w-full h-full  overflow-hidden pointer-events-none">
       {/* Noodle */}
       <motion.img
         src={noodleImg}
@@ -43,7 +43,7 @@ const FloatingIngredients = () => {
       <motion.img
         src={twistedPastaImg}
         alt="twisted pasta"
-        className="absolute rotate-45 bottom-0 right-5/12 w-40"
+        className="absolute hidden sm:block rotate-45 bottom-0 right-5/12 w-40"
         style={{ filter: "blur(4px)" }}
         animate={{
           ...floatAnimation,
@@ -55,7 +55,7 @@ const FloatingIngredients = () => {
       <motion.img
         src={tomatoImg}
         alt="tomato"
-        className="absolute right-10 w-32"
+        className="absolute right-10 hidden sm:block w-32"
         style={{ filter: "blur(3px)" }}
         animate={{
           ...floatAnimation,
