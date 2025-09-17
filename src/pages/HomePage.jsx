@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/HeroSection";
 import AboutUs from "../components/AboutUs";
 import MissionVision from "../components/MissionVision";
+import BannerPremium from "../components/Banner";
 
 const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage = () => {
       <Hero />
       <AboutUs />
       <MissionVision />
+      <BannerPremium />
     </>
   );
 };
