@@ -146,11 +146,11 @@ const AboutUs = () => {
   return (
     <section ref={sectionRef} className="relative">
       {/* Floating Pasta Elements - 4 Different Positions */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
         {/* Pasta 1 - Top Right */}
         <div
           ref={pasta1Ref}
-          className="absolute top-8 -right-4 md:top-12 md:-right-2 lg:top-16 lg:right-4 xl:top-20 xl:right-8"
+          className="absolute top-8 -right-4 md:top-12 md:-right-2 lg:top-16 lg:right-4 xl:top-20 xl:right-8 "
           style={{ zIndex: 1 }}
         >
           <img
