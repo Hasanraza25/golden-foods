@@ -5,6 +5,7 @@ import AboutUs from "../components/AboutUs";
 import MissionVision from "../components/MissionVision";
 import BannerPremium from "../components/Banner";
 import Footer from "../components/Footer";
+import CategoryCards from "../components/CategoryCards";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
       <AboutUs />
       <MissionVision />
       <BannerPremium />
+      <CategoryCards/>
       <Footer />
     </>
   );

@@ -60,7 +60,7 @@ export default function BannerPremium() {
   };
 
   return (
-    <section className="relative w-full bg-gradient-to-r from-yellow-50 via-white to-orange-50 py-16 overflow-hidden">
+    <section className="relative w-full  bg-gradient-to-r from-yellow-50 via-white to-orange-50 py-16 overflow-hidden">
       <FloatingIngredients />
       <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row items-stretch px-6 md:px-12 gap-8 z-10">
         {/* Fixed Left Controller */}
@@ -116,7 +116,7 @@ export default function BannerPremium() {
                   <img
                     src={s.image}
                     alt={s.recipeTitle}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </motion.div>
 

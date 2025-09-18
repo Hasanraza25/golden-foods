@@ -31,7 +31,7 @@ const FloatingIngredients = () => {
       <motion.img
         src={pastaImg}
         alt="pasta"
-        className="absolute left-1/5 w-44"
+        className="absolute left-3/5 sm:left-1/5 w-44"
         style={{ filter: "blur(2.5px)" }}
         animate={{
           ...floatAnimation,
@@ -44,7 +44,7 @@ const FloatingIngredients = () => {
         src={twistedPastaImg}
         alt="twisted pasta"
         className="absolute hidden sm:block rotate-45 bottom-0 right-5/12 w-40"
-        style={{ filter: "blur(4px)" }}
+        style={{ filter: "blur(3.5px)" }}
         animate={{
           ...floatAnimation,
           transition: { ...floatAnimation.transition, duration: 8 },
@@ -67,8 +67,8 @@ const FloatingIngredients = () => {
       <motion.img
         src={tomatoImg}
         alt="tomato"
-        className="absolute left-30 bottom-0 w-32"
-        style={{ filter: "blur(2px)" }}
+        className="absolute left-30 bottom-8 sm:bottom-0 w-32"
+        style={{ filter: "blur(2.5px)" }}
         animate={{
           ...floatAnimation,
           transition: { ...floatAnimation.transition, duration: 9 },
@@ -80,7 +80,7 @@ const FloatingIngredients = () => {
         src={chilliImg}
         alt="chilli"
         className="absolute right-1/12 top-4/6 w-44"
-        style={{ filter: "blur(3px)" }}
+        style={{ filter: "blur(3.5px)" }}
         animate={{
           ...floatAnimation,
           transition: { ...floatAnimation.transition, duration: 7.5 },
