@@ -67,7 +67,7 @@ export default function BannerPremium() {
         <div className="w-full translate-y-1/2 md:w-1/5 flex flex-col pr-6 self-start">
           <div>
             <h2 className="text-3xl font-extrabold text-gray-900">
-              Recipes <span className="text-yellow-600">You Love</span>
+              Recipes <span className="text-[#FDC400]">You Love</span>
             </h2>
             <p className="mt-2 text-gray-600 text-sm leading-relaxed">
               Explore premium dishes designed by our chefs.
