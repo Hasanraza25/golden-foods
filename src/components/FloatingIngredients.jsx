@@ -44,7 +44,7 @@ const FloatingIngredients = () => {
         src={twistedPastaImg}
         alt="twisted pasta"
         className="absolute hidden sm:block rotate-45 bottom-0 right-5/12 w-40"
-        style={{ filter: "blur(3.5px)" }}
+        style={{ filter: "blur(2px)" }}
         animate={{
           ...floatAnimation,
           transition: { ...floatAnimation.transition, duration: 8 },
