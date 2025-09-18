@@ -397,7 +397,19 @@ export default function Hero() {
       });
 
       gsap.delayedCall(0.7, () => {
-        const nextIndex = (currentPlateIndex + 1) % plates.length;
+        // Modified logic to skip the first plate (index 0) after initial display
+        let nextIndex;
+        if (currentPlateIndex === 0) {
+          // If currently on first plate, move to second plate
+          nextIndex = 1;
+        } else {
+          // For all other plates, cycle through plates 1-5 (skip index 0)
+          nextIndex = currentPlateIndex + 1;
+          if (nextIndex >= plates.length) {
+            nextIndex = 1; // Go back to plate 1 instead of plate 0
+          }
+        }
+        
         const nextPlate = plates[nextIndex];
 
         createTransitionSmoke();
