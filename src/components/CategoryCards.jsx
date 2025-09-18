@@ -1,12 +1,12 @@
 import React from "react";
 
 // Example placeholder images (replace with real ones)
-import MacaroniImg from "../assets/images/noodles-plate.png";
-import SpaghettiImg from "../assets/images/noodles-plate.png";
-import ChaatMasalaImg from "../assets/images/noodles-plate.png";
-import VermicelliImg from "../assets/images/noodles-plate.png";
-import ClassicSpaghettiImg from "../assets/images/noodles-plate.png";
-import ClassicMacaroniImg from "../assets/images/noodles-plate.png";
+import MacaroniImg from "../assets/category/recipie_macaroni.png";
+import SpaghettiImg from "../assets/category/recipie_spaghetti.png";
+import ChaatMasalaImg from "../assets/category/chat_masala.png";
+import VermicelliImg from "../assets/category/u2.png";
+import ClassicSpaghettiImg from "../assets/category/classic_spaghetti.png";
+import ClassicMacaroniImg from "../assets/category/classic_macaroni.png";
 
 const categories = [
   {
@@ -43,7 +43,7 @@ const categories = [
 
 const CategoryCards = () => {
   return (
-    <section className="py-12 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-12 px-6 md:px-12 lg:px-20 bg-gradient-to-b  from-white to-gray-50">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">
         Our Premium Categories
       </h2>
