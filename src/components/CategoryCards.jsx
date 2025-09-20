@@ -1,12 +1,12 @@
 import React from "react";
 
-// Example placeholder images (replace with real ones)
 import MacaroniImg from "../assets/category/recipie_macaroni.png";
 import SpaghettiImg from "../assets/category/recipie_spaghetti.png";
 import ChaatMasalaImg from "../assets/category/chat_masala.png";
 import VermicelliImg from "../assets/category/U2.png";
 import ClassicSpaghettiImg from "../assets/category/classic_spaghetti.png";
 import ClassicMacaroniImg from "../assets/category/classic_macaroni.png";
+import GoldenFoodsWatermark from "../assets/goldenfoods.png"; // <-- uncomment & add when ready
 
 const categories = [
   {
@@ -42,32 +42,56 @@ const categories = [
 ];
 
 const CategoryCards = () => {
+  // Duplicate list so CSS translation (-50%) can create a seamless loop
+  const looped = categories.concat(categories);
+
   return (
-    <section className="py-12 px-6 md:px-12 lg:px-20 bg-gradient-to-b  from-white to-gray-50">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">
+    <section className="relative pt-16 -mb-28">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-yellow-400 mb-8 z-10 relative drop-shadow-lg">
         Our Premium Categories
       </h2>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {categories.map((category, idx) => (
-          <div
-            key={idx}
-            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden group"
-          >
-            <div className="overflow-hidden">
-              <img
-                src={category.image}
-                alt={category.name}
-                className="w-full h-52 object-contain p-6 transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-            <div className="p-6 text-center">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                {category.name}
-              </h3>
-              <p className="text-gray-500 text-sm">{category.tagline}</p>
-            </div>
+
+      {/* MARQUEE: container hides overflow, track translates */}
+      <div className="relative">
+        {/* outer wrapper hides scrollbar/overflow */}
+        <div className="marquee no-scrollbar">
+          {/* track: duplicated items, nowrap */}
+          <div className="marquee-track flex gap-8 flex-nowrap items-stretch">
+            {looped.map((cat, idx) => (
+              <article
+                key={idx}
+                className="min-w-[260px] max-w-[300px] shrink-0 bg-white/6 backdrop-blur-md border border-yellow-400/18 rounded-3xl p-4
+                           flex flex-col items-center text-center shadow-md transform transition-transform duration-300 hover:scale-105"
+                aria-hidden={idx >= categories.length ? "true" : "false"}
+              >
+                <div className="w-full flex items-center justify-center p-4">
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="w-36 h-36 object-contain transition-transform duration-500"
+                  />
+                </div>
+
+                <h3 className="mt-3 text-lg font-semibold text-yellow-300">
+                  {cat.name}
+                </h3>
+                <p className="text-sm text-gray-200 mt-1">{cat.tagline}</p>
+              </article>
+            ))}
           </div>
-        ))}
+        </div>
+      </div>
+
+      {/* Full-width Golden Foods PNG (breaks out of container padding) */}
+      <div className="mt-12">
+        <div className="w-screen relative">
+          {/* uncomment and replace when you have the PNG */}
+          <img
+            src={GoldenFoodsWatermark}
+            alt="Golden Foods"
+            className="w-full object-contain pointer-events-none"
+          />
+        </div>
       </div>
     </section>
   );
