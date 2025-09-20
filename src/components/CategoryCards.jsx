@@ -2,7 +2,7 @@ import React from "react";
 
 import MacaroniImg from "../assets/category/recipie_macaroni.png";
 import SpaghettiImg from "../assets/category/recipie_spaghetti.png";
-import ChaatMasalaImg from "../assets/category/chat_masala.png";
+import ChaatMasalaImg from "../assets/category/chaat_masala.png";
 import VermicelliImg from "../assets/category/u2.png";
 import ClassicSpaghettiImg from "../assets/category/classic_spaghetti.png";
 import ClassicMacaroniImg from "../assets/category/classic_macaroni.png";
