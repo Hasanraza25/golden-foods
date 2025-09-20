@@ -14,8 +14,8 @@ const HomePage = () => {
       <Hero />
       <AboutUs />
       <MissionVision />
-      <BannerPremium />
       <CategoryCards/>
+      <BannerPremium />
       <Footer />
     </>
   );

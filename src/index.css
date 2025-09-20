@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+/* ---------- marquee / scroll ---------- */
+.marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* The track moves left; we duplicate content so -50% is seamless */
+.marquee-track {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  /* animation duration = how fast it scrolls. Increase time → slower scroll */
+  animation: marquee-scroll 28s linear infinite;
+}
+
+/* pause on hover (desktop and touch when touching) */
+.marquee:hover .marquee-track,
+.marquee:active .marquee-track {
+  animation-play-state: paused;
+}
+
+/* keyframes: move left by half (because we duplicated the content). */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Hide native scrollbars if any (fallback) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* optional small polish: make images sharp on retina and remove flicker */
+.marquee-track img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-origin: center;
+}
+  
