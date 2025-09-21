@@ -88,7 +88,7 @@ const mobileDuplicates = [
 
 const FloatingIngredients = () => {
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none hidden md:block">
       {ingredients.map((item, index) => (
         <motion.img
           key={`ingredient-${index}`}
