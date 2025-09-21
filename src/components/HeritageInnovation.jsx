@@ -14,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 const HeritageInnovation = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("heritage");
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [counters, setCounters] = useState({
     years: 0,
     products: 0,
@@ -21,6 +22,8 @@ const HeritageInnovation = () => {
     teaYears: 0,
   });
   const sectionRef = useRef(null);
+  const contentRef = useRef(null);
+  const imageRef = useRef(null);
 
   // Pasta refs for floating animations
   const pasta1Ref = useRef(null);
@@ -32,6 +35,43 @@ const HeritageInnovation = () => {
     { key: "towns", label: "Towns Served", target: 200, suffix: "+" },
     { key: "teaYears", label: "Years Tea Factory", target: 67, suffix: "" },
   ];
+
+  // Fast and smooth tab transition function
+  const handleTabChange = (newTab) => {
+    if (newTab === activeTab || isTransitioning) return;
+    
+    setIsTransitioning(true);
+    
+    // Create timeline for fast smooth transition
+    const tl = gsap.timeline();
+
+    // Quick slide out current content
+    tl.to([contentRef.current, imageRef.current], {
+      opacity: 0,
+      y: -20,
+      duration: 0.15,
+      ease: "power2.in"
+    })
+    // Change content immediately when hidden
+    .call(() => {
+      setActiveTab(newTab);
+    })
+    // Quick slide in new content
+    .fromTo([contentRef.current, imageRef.current], 
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.2,
+        ease: "power2.out",
+        stagger: 0.05
+      }
+    )
+    // Complete transition
+    .call(() => {
+      setIsTransitioning(false);
+    });
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -136,9 +176,9 @@ const HeritageInnovation = () => {
         }
       );
 
-      // Content Animation
+      // Initial Content Animation
       gsap.fromTo(
-        sectionRef.current.querySelector(".content-side"),
+        contentRef.current,
         {
           x: -100,
           opacity: 0,
@@ -157,9 +197,9 @@ const HeritageInnovation = () => {
         }
       );
 
-      // Image Animation
+      // Initial Image Animation
       gsap.fromTo(
-        sectionRef.current.querySelector(".image-side"),
+        imageRef.current,
         {
           x: 100,
           opacity: 0,
@@ -325,22 +365,24 @@ const HeritageInnovation = () => {
           <div className="bg-gray-100 backdrop-blur-lg rounded-full p-1 shadow-lg border border-gray-200 w-full max-w-lg md:max-w-none md:w-auto">
             <div className="flex w-full md:w-auto">
               <button
-                onClick={() => setActiveTab("heritage")}
-                className={`flex-1 md:flex-none px-3 md:px-6 lg:px-8 py-2 md:py-3 lg:py-4 rounded-full font-semibold transition-all duration-300 text-xs md:text-sm lg:text-base text-center ${
+                onClick={() => handleTabChange("heritage")}
+                disabled={isTransitioning}
+                className={`flex-1 md:flex-none px-3 md:px-6 lg:px-8 py-2 md:py-3 lg:py-4 rounded-full font-semibold transition-all duration-200 text-xs md:text-sm lg:text-base text-center ${
                   activeTab === "heritage"
                     ? "bg-gradient-to-r from-red-600 to-yellow-500 text-white shadow-lg"
                     : "text-gray-600 hover:text-gray-800 hover:bg-gray-200"
-                }`}
+                } ${isTransitioning ? "opacity-70" : ""}`}
               >
                 <span className="block md:inline">Our Heritage</span>
               </button>
               <button
-                onClick={() => setActiveTab("innovation")}
-                className={`flex-1 md:flex-none px-3 md:px-6 lg:px-8 py-2 md:py-3 lg:py-4 rounded-full font-semibold transition-all duration-300 text-xs md:text-sm lg:text-base text-center ${
+                onClick={() => handleTabChange("innovation")}
+                disabled={isTransitioning}
+                className={`flex-1 md:flex-none px-3 md:px-6 lg:px-8 py-2 md:py-3 lg:py-4 rounded-full font-semibold transition-all duration-200 text-xs md:text-sm lg:text-base text-center ${
                   activeTab === "innovation"
                     ? "bg-gradient-to-r from-red-600 to-yellow-500 text-white shadow-lg"
                     : "text-gray-600 hover:text-gray-800 hover:bg-gray-200"
-                }`}
+                } ${isTransitioning ? "opacity-70" : ""}`}
               >
                 <span className="block md:inline">Innovation & Quality</span>
               </button>
@@ -351,7 +393,7 @@ const HeritageInnovation = () => {
         {/* Main Content */}
         <div className="main-content grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch mb-12 md:mb-16">
           {/* Content Side */}
-          <div className="content-side flex order-2 lg:order-1">
+          <div ref={contentRef} className="content-side flex order-2 lg:order-1">
             <div className="bg-gray-50 backdrop-blur-lg rounded-2xl p-4 md:p-6 lg:p-8 shadow-xl border border-gray-200 w-full flex flex-col">
               <h3 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-red-600 mb-3 md:mb-4">
                 {currentContent.title}
@@ -387,7 +429,7 @@ const HeritageInnovation = () => {
           </div>
 
           {/* Image Side */}
-          <div className="image-side relative flex order-1 lg:order-2">
+          <div ref={imageRef} className="image-side relative flex order-1 lg:order-2">
             <div className="relative w-full rounded-2xl overflow-hidden shadow-xl border border-gray-200">
               <img
                 src={currentContent.image}
