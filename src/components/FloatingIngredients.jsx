@@ -48,7 +48,7 @@ const ingredients = [
   {
     src: tomatoImg,
     alt: "tomato",
-    className: "left-10 sm:left-30 bottom-4 sm:bottom-0 w-20 sm:w-28 md:w-32",
+    className: "left-4 sm:left-30 bottom-4 sm:bottom-0 w-12 sm:w-28 md:w-32",
     blur: 2.5,
     duration: 9,
   },
@@ -73,7 +73,7 @@ const mobileDuplicates = [
   {
     src: noodleImg,
     alt: "noodle",
-    className: "bottom-1/3 right-1/4 w-16 sm:hidden",
+    className: "bottom-1/4 left-1/12 w-16 sm:hidden",
     blur: 2.5,
     duration: 7,
   },
