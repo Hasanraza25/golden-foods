@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Dish1 from "../assets/pasta.png";
 import Dish2 from "../assets/images/noodles-plate.png";
@@ -32,32 +32,86 @@ const slides = [
 
 export default function BannerPremium() {
   const [index, setIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const count = slides.length;
   const startXRef = useRef(null);
+  const startYRef = useRef(null);
+  const timerRef = useRef(null);
 
-  const prev = () => setIndex((i) => (i === 0 ? count - 1 : i - 1));
-  const next = () => setIndex((i) => (i === count - 1 ? 0 : i + 1));
-  const goTo = (i) => setIndex(i);
+  const prev = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setIndex((i) => (i === 0 ? count - 1 : i - 1));
+    setTimeout(() => setIsTransitioning(false), 800);
+  }, [count, isTransitioning]);
 
-  // autoplay effect
+  const next = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setIndex((i) => (i === count - 1 ? 0 : i + 1));
+    setTimeout(() => setIsTransitioning(false), 800);
+  }, [count, isTransitioning]);
+
+  const goTo = useCallback((i) => {
+    if (isTransitioning || i === index) return;
+    setIsTransitioning(true);
+    setIndex(i);
+    setTimeout(() => setIsTransitioning(false), 800);
+  }, [index, isTransitioning]);
+
+  // Enhanced autoplay with pause/resume functionality
+  const startAutoplay = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      if (!isPaused) {
+        setIndex((i) => (i === count - 1 ? 0 : i + 1));
+      }
+    }, 4000);
+  }, [count, isPaused]);
+
+  const stopAutoplay = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  }, []);
+
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((i) => (i === count - 1 ? 0 : i + 1));
-    }, 3000);
+    startAutoplay();
+    return () => stopAutoplay();
+  }, [startAutoplay, stopAutoplay]);
 
-    return () => clearInterval(timer); // cleanup when unmounted
-  }, [count]);
+  // Enhanced touch/swipe handling
+  const onPointerDown = useCallback((e) => {
+    setIsPaused(true);
+    const clientX = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
+    const clientY = e.clientY ?? e.touches?.[0]?.clientY ?? 0;
+    startXRef.current = clientX;
+    startYRef.current = clientY;
+  }, []);
 
-  // swipe
-  const onPointerDown = (e) => {
-    startXRef.current = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
-  };
-  const onPointerUp = (e) => {
+  const onPointerUp = useCallback((e) => {
     const endX = e.clientX ?? e.changedTouches?.[0]?.clientX ?? 0;
-    const delta = startXRef.current - endX;
-    if (Math.abs(delta) > 50) delta > 0 ? next() : prev();
+    const endY = e.clientY ?? e.changedTouches?.[0]?.clientY ?? 0;
+    
+    if (startXRef.current !== null && startYRef.current !== null) {
+      const deltaX = startXRef.current - endX;
+      const deltaY = Math.abs(startYRef.current - endY);
+      
+      // Only trigger swipe if horizontal movement is greater than vertical
+      if (Math.abs(deltaX) > 80 && Math.abs(deltaX) > deltaY) {
+        deltaX > 0 ? next() : prev();
+      }
+    }
+    
     startXRef.current = null;
-  };
+    startYRef.current = null;
+    setTimeout(() => setIsPaused(false), 1000);
+  }, [next, prev]);
+
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
 
   return (
     <section className="relative w-full  bg-gradient-to-r from-yellow-50 via-white to-orange-50 py-16 overflow-hidden">
@@ -165,6 +219,24 @@ export default function BannerPremium() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="flex md:hidden justify-center gap-3 mt-6">
+          <button
+            onClick={prev}
+            disabled={isTransitioning}
+            className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-gray-300 text-gray-800 hover:bg-yellow-100 hover:border-yellow-400 transition-all duration-300 disabled:opacity-50"
+          >
+            <FaArrowLeft size={16} />
+          </button>
+          <button
+            onClick={next}
+            disabled={isTransitioning}
+            className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-gray-300 text-gray-800 hover:bg-yellow-100 hover:border-yellow-400 transition-all duration-300 disabled:opacity-50"
+          >
+            <FaArrowRight size={16} />
+          </button>
         </div>
       </div>
     </section>

@@ -1,20 +1,25 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/HeroSection";
-import AboutUs from "../components/AboutUs";
+// import AboutUs from "../components/AboutUs";
 import MissionVision from "../components/MissionVision";
+import HeritageInnovation from "../components/HeritageInnovation";
+import ProductShowcase from "../components/ProductShowcase";
+import ManufacturingExcellence from "../components/ManufacturingExcellence";
+import CategoryCards from "../components/CategoryCards";
 import BannerPremium from "../components/Banner";
 import Footer from "../components/Footer";
-import CategoryCards from "../components/CategoryCards";
 
 const HomePage = () => {
   return (
     <>
       <Navbar />
       <Hero />
-      <AboutUs />
+      <HeritageInnovation />
       <MissionVision />
-      <CategoryCards/>
+      <ManufacturingExcellence />
+      <ProductShowcase />
+      <CategoryCards />
       <BannerPremium />
       <Footer />
     </>

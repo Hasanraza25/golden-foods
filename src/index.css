@@ -1,5 +1,73 @@
 @import "tailwindcss";
 
+/* ---------- Enhanced Marquee Animations ---------- */
+.animate-marquee-fast {
+  animation: marquee-scroll-smooth 20s linear infinite;
+  transition: animation-play-state 0.8s ease-out;
+}
+
+.animate-marquee-paused {
+  animation: marquee-scroll-smooth 20s linear infinite;
+  animation-play-state: paused;
+  transition: animation-play-state 0.8s ease-out;
+}
+
+/* Smooth marquee animation with better timing */
+@keyframes marquee-scroll-smooth {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%); /* Move by 1/3 since we have 3x content */
+  }
+}
+
+/* Responsive animation speeds */
+@media (max-width: 640px) {
+  .animate-marquee-fast {
+    animation: marquee-scroll-smooth 30s linear infinite;
+  }
+  .animate-marquee-paused {
+    animation: marquee-scroll-smooth 30s linear infinite;
+    animation-play-state: paused;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .animate-marquee-fast {
+    animation: marquee-scroll-smooth 25s linear infinite;
+  }
+  .animate-marquee-paused {
+    animation: marquee-scroll-smooth 25s linear infinite;
+    animation-play-state: paused;
+  }
+}
+
+/* Hide native scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Performance optimizations */
+.marquee-track img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-origin: center;
+}
+
+/* Smooth hardware acceleration */
+.animate-marquee-fast,
+.animate-marquee-paused {
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
 /* ---------- marquee / scroll ---------- */
 .marquee {
   position: relative;
@@ -31,21 +99,5 @@
   100% {
     transform: translateX(-50%);
   }
-}
-
-/* Hide native scrollbars if any (fallback) */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE/Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* optional small polish: make images sharp on retina and remove flicker */
-.marquee-track img {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform-origin: center;
 }
   
