@@ -118,7 +118,7 @@ export default function BannerPremium() {
   const handleMouseLeave = () => setIsPaused(false);
 
   return (
-    <section className="relative w-full bg-gradient-to-r from-yellow-50 via-white to-orange-50 md:py-16 overflow-hidden">
+    <section className="relative w-full bg-white md:py-16 overflow-hidden">
       <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row items-stretch px-6 md:px-12 sm:gap-8 z-10">
         {/* Fixed Left Controller */}
         <div className="w-full translate-y-12 md:translate-y-1/2 md:w-1/5 flex flex-col pr-6 self-start">
