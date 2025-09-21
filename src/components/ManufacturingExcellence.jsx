@@ -5,7 +5,7 @@ import { Wheat, Settings, Flame, CheckCircle } from "lucide-react";
 
 // Import images
 import NoodlesGrow from "../assets/images/new_images/advance-machinery.png";
-import NoodlesOnStove from "../assets/images/new_images/noodles-on-stove.png";
+import NoodlesOnStove from "../assets/images/new_images/making-pasta.png";
 import Image01 from "../assets/images/new_images/01.png";
 import Image04 from "../assets/images/new_images/04.png";
 
