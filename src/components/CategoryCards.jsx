@@ -6,7 +6,6 @@ import ChaatMasalaImg from "../assets/category/chat_masala.png";
 import VermicelliImg from "../assets/category/U2.png";
 import ClassicSpaghettiImg from "../assets/category/classic_spaghetti.png";
 import ClassicMacaroniImg from "../assets/category/classic_macaroni.png";
-import GoldenFoodsWatermark from "../assets/goldenfoods.png"; 
 
 const categories = [
   {
