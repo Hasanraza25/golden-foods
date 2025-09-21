@@ -53,12 +53,15 @@ export default function BannerPremium() {
     setTimeout(() => setIsTransitioning(false), 800);
   }, [count, isTransitioning]);
 
-  const goTo = useCallback((i) => {
-    if (isTransitioning || i === index) return;
-    setIsTransitioning(true);
-    setIndex(i);
-    setTimeout(() => setIsTransitioning(false), 800);
-  }, [index, isTransitioning]);
+  const goTo = useCallback(
+    (i) => {
+      if (isTransitioning || i === index) return;
+      setIsTransitioning(true);
+      setIndex(i);
+      setTimeout(() => setIsTransitioning(false), 800);
+    },
+    [index, isTransitioning]
+  );
 
   // Enhanced autoplay with pause/resume functionality
   const startAutoplay = useCallback(() => {
@@ -91,34 +94,37 @@ export default function BannerPremium() {
     startYRef.current = clientY;
   }, []);
 
-  const onPointerUp = useCallback((e) => {
-    const endX = e.clientX ?? e.changedTouches?.[0]?.clientX ?? 0;
-    const endY = e.clientY ?? e.changedTouches?.[0]?.clientY ?? 0;
-    
-    if (startXRef.current !== null && startYRef.current !== null) {
-      const deltaX = startXRef.current - endX;
-      const deltaY = Math.abs(startYRef.current - endY);
-      
-      // Only trigger swipe if horizontal movement is greater than vertical
-      if (Math.abs(deltaX) > 80 && Math.abs(deltaX) > deltaY) {
-        deltaX > 0 ? next() : prev();
+  const onPointerUp = useCallback(
+    (e) => {
+      const endX = e.clientX ?? e.changedTouches?.[0]?.clientX ?? 0;
+      const endY = e.clientY ?? e.changedTouches?.[0]?.clientY ?? 0;
+
+      if (startXRef.current !== null && startYRef.current !== null) {
+        const deltaX = startXRef.current - endX;
+        const deltaY = Math.abs(startYRef.current - endY);
+
+        // Only trigger swipe if horizontal movement is greater than vertical
+        if (Math.abs(deltaX) > 80 && Math.abs(deltaX) > deltaY) {
+          deltaX > 0 ? next() : prev();
+        }
       }
-    }
-    
-    startXRef.current = null;
-    startYRef.current = null;
-    setTimeout(() => setIsPaused(false), 1000);
-  }, [next, prev]);
+
+      startXRef.current = null;
+      startYRef.current = null;
+      setTimeout(() => setIsPaused(false), 1000);
+    },
+    [next, prev]
+  );
 
   const handleMouseEnter = () => setIsPaused(true);
   const handleMouseLeave = () => setIsPaused(false);
 
   return (
-    <section className="relative w-full  bg-gradient-to-r from-yellow-50 via-white to-orange-50 py-16 overflow-hidden">
+    <section className="relative w-full  bg-gradient-to-r from-yellow-50 via-white to-orange-50 md:py-16 overflow-hidden">
       <FloatingIngredients />
-      <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row items-stretch px-6 md:px-12 gap-8 z-10">
+      <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row items-stretch px-6 md:px-12 sm:gap-8 z-10">
         {/* Fixed Left Controller */}
-        <div className="w-full translate-y-1/2 md:w-1/5 flex flex-col pr-6 self-start">
+        <div className="w-full translate-y-12 md:translate-y-1/2 md:w-1/5 flex flex-col pr-6 self-start">
           <div>
             <h2 className="text-3xl font-extrabold text-gray-900">
               Recipes <span className="text-[#FDC400]">You Love</span>
@@ -129,7 +135,7 @@ export default function BannerPremium() {
           </div>
 
           {/* Arrows closer to text */}
-          <div className="flex gap-3 mt-8 mb-44 sm:mb-0">
+          <div className="flex gap-3 mt-8 mb-12 sm:mb-0">
             <button
               onClick={prev}
               className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-300 text-gray-800 hover:bg-yellow-100"
@@ -165,7 +171,7 @@ export default function BannerPremium() {
                 {/* Image */}
                 <motion.div
                   key={`img-${index}`}
-                  className="w-full md:w-1/2 h-64 md:h-auto"
+                  className="w-full md:w-1/2 h-80 md:h-auto"
                 >
                   <img
                     src={s.image}
@@ -219,24 +225,6 @@ export default function BannerPremium() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div className="flex md:hidden justify-center gap-3 mt-6">
-          <button
-            onClick={prev}
-            disabled={isTransitioning}
-            className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-gray-300 text-gray-800 hover:bg-yellow-100 hover:border-yellow-400 transition-all duration-300 disabled:opacity-50"
-          >
-            <FaArrowLeft size={16} />
-          </button>
-          <button
-            onClick={next}
-            disabled={isTransitioning}
-            className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-gray-300 text-gray-800 hover:bg-yellow-100 hover:border-yellow-400 transition-all duration-300 disabled:opacity-50"
-          >
-            <FaArrowRight size={16} />
-          </button>
         </div>
       </div>
     </section>

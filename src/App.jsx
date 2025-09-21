@@ -1,6 +1,6 @@
-import HomePage from "./pages/HomePage";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import AppRouter from "./router/AppRouter";
 
 AOS.init({
   duration: 1000, // animation duration (ms)
@@ -14,7 +14,7 @@ export default function App() {
     
       {/* Content with relative positioning to appear above background */}
       <div className="relative z-10">
-        <HomePage />
+        <AppRouter/>
       </div>
     </div>
   );

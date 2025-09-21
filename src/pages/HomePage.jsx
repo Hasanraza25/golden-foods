@@ -13,7 +13,6 @@ import Footer from "../components/Footer";
 const HomePage = () => {
   return (
     <>
-      <Navbar />
       <Hero />
       <HeritageInnovation />
       <MissionVision />
@@ -21,7 +20,6 @@ const HomePage = () => {
       <ProductShowcase />
       <CategoryCards />
       <BannerPremium />
-      <Footer />
     </>
   );
 };

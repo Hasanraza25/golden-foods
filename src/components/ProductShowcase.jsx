@@ -45,7 +45,7 @@ const ProductShowcase = () => {
     setIsVisible(true);
     const interval = setInterval(() => {
       setActiveProduct((prev) => (prev + 1) % products.length);
-    }, 4000);
+    }, 2500);
     return () => clearInterval(interval);
   }, []);
 
