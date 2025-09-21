@@ -8,6 +8,7 @@ import ProductShowcase from "../components/ProductShowcase";
 import ManufacturingExcellence from "../components/ManufacturingExcellence";
 import CategoryCards from "../components/CategoryCards";
 import BannerPremium from "../components/Banner";
+import CookAndEat from "../components/CookAndEat";
 import Footer from "../components/Footer";
 
 const HomePage = () => {
@@ -19,7 +20,8 @@ const HomePage = () => {
       <ManufacturingExcellence />
       <ProductShowcase />
       <CategoryCards />
-      <BannerPremium />
+      {/* <BannerPremium />  */}
+      <CookAndEat />
     </>
   );
 };

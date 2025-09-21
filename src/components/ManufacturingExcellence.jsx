@@ -407,7 +407,7 @@ const ManufacturingExcellence = () => {
         </div>
 
         {/* Step Indicators */}
-        <div ref={indicatorsRef} className="flex justify-center space-x-4 mt-12">
+        {/* <div ref={indicatorsRef} className="flex justify-center space-x-4 mt-12">
           {manufacturingSteps.map((_, index) => (
             <button
               key={index}
@@ -415,7 +415,7 @@ const ManufacturingExcellence = () => {
               className="indicator w-4 h-4 rounded-full transition-all duration-300 bg-white/30 hover:bg-white/50 shadow-lg"
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

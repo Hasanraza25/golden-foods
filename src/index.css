@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+/* ---------- Custom Font Family ---------- */
+@font-face {
+  font-family: 'Kastelov';
+  src: url('./fonts/Kastelov - Axiforma Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kastelov';
+  src: url('./fonts/Kastelov - Axiforma Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Set Kastelov as the default font family */
+* {
+  font-family: 'Kastelov', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  font-family: 'Kastelov', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
 /* ---------- Enhanced Marquee Animations ---------- */
 .animate-marquee-fast {
   animation: marquee-scroll-smooth 20s linear infinite;
