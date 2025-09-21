@@ -17,10 +17,10 @@ const HomePage = () => {
       <Hero />
       <HeritageInnovation />
       <MissionVision />
+      <BannerPremium /> 
       <ManufacturingExcellence />
       <ProductShowcase />
       <CategoryCards />
-      {/* <BannerPremium />  */}
       <CookAndEat />
     </>
   );
