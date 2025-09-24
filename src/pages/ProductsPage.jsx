@@ -449,10 +449,15 @@ export default function ProductsPage() {
               }}
             >
               {/* Placeholder image */}
-              <div className="w-full h-40 xl:h-48 2xl:h-60 flex items-center justify-center bg-white/5 rounded-lg 2xl:rounded-xl mb-4 2xl:mb-6 transform transition-all duration-300 hover:bg-white/10">
-                <span className="text-sm xl:text-base 2xl:text-lg text-yellow-200">
-                  Image
-                </span>
+              <div className="w-full h-40 xl:h-48 2xl:h-60 flex items-center justify-center bg-white/5 rounded-lg 2xl:rounded-xl mb-4 2xl:mb-6 overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="max-w-full max-h-full object-contain"
+                  style={{ imageRendering: "auto" }}
+                />
               </div>
 
               <h3 className="text-lg xl:text-xl 2xl:text-2xl font-semibold mb-2 2xl:mb-4 transition-colors duration-300 hover:text-yellow-300 line-clamp-2 flex-grow">
