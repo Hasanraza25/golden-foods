@@ -1,3 +1,4 @@
+
 {
   "products": {
     "1": {
@@ -5,7 +6,7 @@
       "name": "Golden Achari Macaroni 250g",
       "price": 160,
       "originalPrice": 180,
-      "image": "/src/assets/category/products/macaroni/achari.png",
+      "image": "../assets/category/products/macaroni/achari.png",
       "category": "Golden Recipe Macaroni",
       "weight": "250g",
       "sku": "GRM-ACH-250",

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import detailedProductsData from "../data/detailedProducts.json";
+import { detailedProducts } from "../data/detailedProducts.js";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -13,14 +13,14 @@ export default function ProductDetailPage() {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
 
-    const productData = detailedProductsData.products[id];
+    const productData = detailedProducts.products[id];
     if (productData) {
       setProduct(productData);
 
       // Get related products
       const related =
         productData.relatedProducts
-          ?.map((relatedId) => detailedProductsData.products[relatedId])
+          ?.map((relatedId) => detailedProducts.products[relatedId])
           .filter(Boolean) || [];
       setRelatedProducts(related);
 
@@ -179,29 +179,29 @@ export default function ProductDetailPage() {
                 </div>
               </div>
             </div>
-          <div className="mb-16">
-            <div className="flex justify-center">
-              <a
-                href={product.shopUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-bold text-lg rounded-2xl hover:from-yellow-400 hover:to-orange-400 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer"
-              >
-                <svg
-                  className="w-6 h-6 mr-3"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
+            <div className="mb-16">
+              <div className="flex justify-center">
+                <a
+                  href={product.shopUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-bold text-lg rounded-2xl hover:from-yellow-400 hover:to-orange-400 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 2L3 7v11a2 2 0 002 2h10a2 2 0 002-2V7l-7-5zM8 15a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Shop Now
-              </a>
+                  <svg
+                    className="w-6 h-6 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 2L3 7v11a2 2 0 002 2h10a2 2 0 002-2V7l-7-5zM8 15a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Shop Now
+                </a>
+              </div>
             </div>
-          </div>
           </div>
         </div>
 
@@ -294,7 +294,7 @@ export default function ProductDetailPage() {
                 <div
                   key={relatedProduct.id}
                   className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 hover:scale-105 hover:shadow-2xl group cursor-pointer"
-                  onClick={() => navigate(`/product/${relatedProduct.id}`)}
+                  onClick={() => navigate(`/products/${relatedProduct.id}`)}
                 >
                   <div className="w-full h-48 bg-white/5 rounded-xl mb-4 flex items-center justify-center overflow-hidden group-hover:bg-white/10 transition-all">
                     <img
