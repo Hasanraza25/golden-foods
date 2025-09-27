@@ -15,12 +15,12 @@ const HomePage = () => {
   return (
     <>
       <Hero />
+      <CategoryCards />
       <HeritageInnovation />
       <MissionVision />
       <BannerPremium /> 
       <ManufacturingExcellence />
       <ProductShowcase />
-      <CategoryCards />
       <CookAndEat />
     </>
   );

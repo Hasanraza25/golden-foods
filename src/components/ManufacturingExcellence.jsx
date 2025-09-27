@@ -255,7 +255,6 @@ const ManufacturingExcellence = () => {
     return () => ctx.revert();
   }, []);
 
-  // Active step indicator animation
   useEffect(() => {
     const indicators = indicatorsRef.current?.querySelectorAll('.indicator');
     if (indicators) {

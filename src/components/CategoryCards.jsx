@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import MacaroniImg from "../assets/category/recipie_macaroni.png";
 import SpaghettiImg from "../assets/category/recipie_spaghetti.png";
@@ -43,6 +44,7 @@ const categories = [
 const CategoryCards = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
   
   // Triple the categories for smoother infinite scroll
   const looped = [...categories, ...categories, ...categories];
@@ -188,6 +190,16 @@ const CategoryCards = () => {
             </article>
           ))}
         </div>
+      </div>
+
+      {/* View All Button - Centered */}
+      <div className="flex justify-center mt-8 sm:mt-12">
+        <button
+          onClick={() => navigate('/products')}
+          className="px-8 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+        >
+          View All Products
+        </button>
       </div>
 
       {/* Golden Foods Watermark */}
